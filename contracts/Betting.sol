@@ -19,7 +19,7 @@ contract Betting {
     mapping(address => Player) playerInfo;
     
     modifier onlyOwner {
-        require (msg.sender == owner);
+        require (msg.sender == owner, "You are not the owner");
         _;
     }
     
@@ -95,11 +95,8 @@ contract Betting {
         totalBetsTwo = 0;
     }
     
-    function getAmountOne() public view returns (uint) {
-        return totalBetsOne;
-    }
-    
-    function getAmountTwo() public view returns (uint) {
+    function getAmount(uint team) public view returns (uint) {
+        if (team == 1) return totalBetsOne;
         return totalBetsTwo;
     }
 }

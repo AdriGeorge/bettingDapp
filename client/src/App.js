@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Contract from './contracts/Betting.json';
 import getWeb3 from './getWeb3';
+import { Container, Row, Col } from 'react-bootstrap';
 
-import TeamA from 'components/TeamA.js';
-import TeamB from 'components/TeamB.js';
+import Team from './components/Team.js';
 
 import './App.css';
 
@@ -27,7 +27,7 @@ class App extends Component {
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      this.setState({ web3, accounts, contract: instance }, this.runExample);
+      this.setState({ web3, accounts, contract: instance });
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
@@ -37,24 +37,38 @@ class App extends Component {
     }
   };
 
-  runExample = async () => {
-    const { accounts, contract } = this.state;
-
-    // Add 1+1
-    var x = await contract.methods.get().call({ from: accounts[0] });
-    console.log('App -> x', x);
-    await contract.methods.set(5).send({ from: accounts[0] });
-
-    // set 5
-    x = await contract.methods.get().call({ from: accounts[0] });
-    console.log('App -> x', x);
-  };
-
   render() {
     if (!this.state.web3) {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
-    return <h2>Every thing is ok, check your console.</h2>;
+    return (
+      <div className="App section">
+        <div>
+          Welcome on my Ethereum Betting website <br />
+          Your Wallet address is {this.state.accounts[0]}
+        </div>
+        <Container>
+          <Row>
+            <Col xs={6} sm={6}>
+              <Team
+                web3={this.state.web3}
+                account={this.state.accounts[0]}
+                contract={this.state.contract}
+                team={1}
+              />
+            </Col>
+            <Col xs={6} sm={6}>
+              <Team
+                web3={this.state.web3}
+                account={this.state.accounts[0]}
+                contract={this.state.contract}
+                team={2}
+              />
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    );
   }
 }
 
