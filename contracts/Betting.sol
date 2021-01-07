@@ -23,7 +23,7 @@ contract Betting {
         _;
     }
     
-    constructor() {
+    constructor() public{
         owner = msg.sender;
         minimumBet = 1000000000000;  //0.01 eth;
     }

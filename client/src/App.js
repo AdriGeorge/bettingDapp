@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import Contract from './contracts/SimpleStorage.json';
+import Contract from './contracts/Betting.json';
 import getWeb3 from './getWeb3';
+
+import TeamA from 'components/TeamA.js';
+import TeamB from 'components/TeamB.js';
 
 import './App.css';
 
