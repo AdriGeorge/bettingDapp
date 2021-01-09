@@ -1,8 +1,9 @@
 const path = require('path');
 
+export const MNEMONIC = '';
+export const INFURA = '';
+
 var HDWalletProvider = require('@truffle/hdwallet-provider');
-const MNEMONIC =
-  'liberty record renew snack hard material remain bind dress excuse thing where';
 
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
@@ -16,10 +17,7 @@ module.exports = {
     },
     ropsten: {
       provider: function () {
-        return new HDWalletProvider(
-          MNEMONIC,
-          'https://ropsten.infura.io/v3/869b7cb492e3441a9bf412042ab3976c'
-        );
+        return new HDWalletProvider(MNEMONIC, INFURA);
       },
       gas: 4600000,
       network_id: 3,

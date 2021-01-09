@@ -26,6 +26,7 @@ export default function Team({ web3, contract, account, team }) {
     console.log('im setting winner', team);
     await contract.methods.distributePrizes(team).send({
       from: account,
+      gas: 1000000,
     });
     getAmount();
   };
