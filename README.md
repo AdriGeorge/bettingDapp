@@ -1,20 +1,13 @@
-# react-dapp-starter
+# betting dapp
 
-* **[Pre-requisites](#pre-requisites)**
 * **[Setup](#setup)**
 
 ## Getting Started
 
-These instructions will allow you to create a dapp easily.
-
-## Pre-requisites
-Ganache installed or truffle
+These instructions will allow you to start this dapp.
 
 ## Setup
 ```sh
 git clone https://github.com/AdriGeorge/react-dapp-starter.git folderName
-cd folderName
-cd client
-npm install
-npm run start
-```
+into truffle-config set your MNEMONIC and INFURA conf.
+truffle migrate
